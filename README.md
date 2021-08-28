@@ -1,2 +1,1 @@
-# hello-metabase
-Hello, Metabase
+# Hello, Metabase

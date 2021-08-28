@@ -6,5 +6,25 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=metabase
+      - MB_DB_HOST=postgres
+      - MB_DB_USER=postgres
+      - MB_DB_PASS=postgres
+      - MB_DB_PORT=5432
     ports:
       - "3000:3000"
+
+  postgres:
+    image: postgres:13.4-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=metabase
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - metabase_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  metabase_postgres_data:
